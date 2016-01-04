@@ -20,16 +20,16 @@ namespace DatalogicSjorpioLaserTesting
         {
             InitializeComponent();
             hDcd = new DecodeHandle(DecodeDeviceCap.Exists | DecodeDeviceCap.Barcode);
-            hDcd.SoftTrigger(DecodeInputType.Barcode, 60000);
+            hDcd.SoftTrigger(DecodeInputType.Barcode, 6000);
 
-            Log("[BEGIN] Starting laser with 60 sec timeout." + Environment.NewLine);
+            Log("[BEGIN] Starting laser with 6 sec timeout." + Environment.NewLine);
 
             dcdEvent = new DecodeEvent(hDcd, reqType, this);
             dcdEvent.TimeOut += new DecodeTimeOut(dcdEvent_Timeout);
         }
         private void dcdEvent_Timeout(object sender, Datalogic.API.DecodeEventArgs e)
         {
-            hDcd.SoftTrigger(DecodeInputType.Barcode, 60000);
+            hDcd.SoftTrigger(DecodeInputType.Barcode, 6000);
             Log("[TIMEOUT] Restarting laser" + Environment.NewLine);
         }
 
